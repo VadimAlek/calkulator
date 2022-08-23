@@ -24,6 +24,8 @@ public class CalculateController {
 
 @GetMapping("/plus")
     public String plus(@RequestParam (name = "num1") Integer a, @RequestParam (name = "num2") Integer b){
+    if (a==null || b==null)
+        return "Одно из полей не передано.";
         int result = calculateService.plus (a,b);
     return a + "+"+b+"="+result;
 
@@ -31,6 +33,8 @@ public class CalculateController {
 
     @GetMapping("/minus")
     public String minus (@RequestParam (name = "num1") Integer a, @RequestParam (name = "num2") Integer b){
+        if (a==null || b==null)
+            return "Одно из полей не передано.";
         int result = calculateService.minus (a,b);
         return a + "+"+b+"="+result;
 
@@ -38,6 +42,8 @@ public class CalculateController {
 
     @GetMapping("/multiply")
     public String multiply (@RequestParam (name = "num1") Integer a, @RequestParam (name = "num2") Integer b){
+        if (a==null || b==null)
+            return "Одно из полей не передано.";
         int result = calculateService.multiply (a,b);
         return a + "+"+b+"="+result;
 
@@ -45,6 +51,10 @@ public class CalculateController {
 
     @GetMapping("/divide")
     public String divide (@RequestParam (name = "num1") Integer a, @RequestParam (name = "num2") Integer b){
+        if (a==null || b==null)
+            return "Одно из полей не передано.";
+        if (b==0)
+            return "На ноль делить нельзя.";
         double result = calculateService.divide (a,b);
         return a + "+"+b+"="+result;
 
